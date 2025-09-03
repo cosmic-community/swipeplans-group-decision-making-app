@@ -41,7 +41,7 @@ export async function getTilesForTileSet(tileSetId: string) {
       'metadata.tile_set': tileSetId
     }).props(['id', 'title', 'slug', 'metadata']).depth(1);
     
-    const tiles = response.objects.sort((a: Tile, b: Tile) => {
+    const tiles = response.objects.sort((a: any, b: any) => {
       const orderA = a.metadata?.order || 0;
       const orderB = b.metadata?.order || 0;
       return orderA - orderB;
@@ -184,7 +184,7 @@ export async function checkForMatches(tileSetId: string) {
       
       // Only consider tiles that all participants swiped on
       if (participantSessions.size === sessions.length) {
-        const allYes = swipes.every(swipe => swipe.decision === 'Yes');
+        const allYes = swipes.every((swipe: any) => swipe.decision === 'Yes');
         
         if (allYes) {
           // Check if match already exists
