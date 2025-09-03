@@ -1,4 +1,5 @@
 import { createBucketClient } from '@cosmicjs/sdk'
+import { Tile, TileSet } from '@/types'
 
 export const cosmic = createBucketClient({
   bucketSlug: process.env.COSMIC_BUCKET_SLUG as string,
@@ -40,7 +41,7 @@ export async function getTilesForTileSet(tileSetId: string) {
       'metadata.tile_set': tileSetId
     }).props(['id', 'title', 'slug', 'metadata']).depth(1);
     
-    const tiles = response.objects.sort((a, b) => {
+    const tiles = response.objects.sort((a: Tile, b: Tile) => {
       const orderA = a.metadata?.order || 0;
       const orderB = b.metadata?.order || 0;
       return orderA - orderB;
@@ -159,7 +160,7 @@ export async function checkForMatches(tileSetId: string) {
     // Group swipe results by tile
     const swipesByTile: Record<string, Array<{ decision: string; sessionId: string }>> = {};
     
-    swipeResults.forEach(swipe => {
+    swipeResults.forEach((swipe: any) => {
       const tileId = swipe.metadata?.tile?.id || swipe.metadata?.tile;
       const sessionId = swipe.metadata?.session?.id || swipe.metadata?.session;
       

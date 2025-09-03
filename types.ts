@@ -134,7 +134,7 @@ interface CreateTileFormData {
 }
 
 // Utility types
-type OptionalMetadata<T> = Partial<T['metadata']>;
+type OptionalMetadata<T extends CosmicObject> = Partial<T['metadata']>;
 type CreateTileSetData = Omit<TileSet, 'id' | 'created_at' | 'modified_at'>;
 type CreateTileData = Omit<Tile, 'id' | 'created_at' | 'modified_at'>;
 type CreateSessionData = Omit<Session, 'id' | 'created_at' | 'modified_at'>;
