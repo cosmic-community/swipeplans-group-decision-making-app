@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply h-full;
+  }
+  
+  body {
+    @apply h-full bg-gray-50 text-gray-900 font-sans antialiased;
+  }
+  
+  * {
+    @apply box-border;
+  }
+}
+
+@layer components {
+  .swipe-card {
+    @apply bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden;
+    @apply transform transition-transform duration-200 ease-out;
+    @apply select-none user-select-none;
+    touch-action: pan-x;
+  }
+  
+  .swipe-card:active {
+    @apply scale-95;
+  }
+  
+  .swipe-card.swiping-right {
+    @apply border-success-400;
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+  }
+  
+  .swipe-card.swiping-left {
+    @apply border-red-400;
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+  }
+  
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-6 rounded-xl;
+    @apply transition-all duration-200 ease-out;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+  
+  .btn-primary:active {
+    @apply scale-95;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-100 hover:bg-gray-200 text-gray-900 font-medium py-3 px-6 rounded-xl;
+    @apply transition-all duration-200 ease-out;
+    @apply focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2;
+  }
+  
+  .btn-secondary:active {
+    @apply scale-95;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-xl;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500;
+    @apply transition-colors duration-200;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-100 p-6;
+  }
+  
+  .mobile-safe-area {
+    @apply pb-safe-area-inset-bottom;
+  }
+  
+  .swipe-action-button {
+    @apply w-16 h-16 rounded-full flex items-center justify-center;
+    @apply transition-all duration-200 ease-out transform;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+    @apply active:scale-95;
+  }
+  
+  .swipe-action-pass {
+    @apply bg-red-500 hover:bg-red-600 text-white;
+    @apply focus:ring-red-500;
+  }
+  
+  .swipe-action-like {
+    @apply bg-success-500 hover:bg-success-600 text-white;
+    @apply focus:ring-success-500;
+  }
+}
+
+@layer utilities {
+  .safe-area-inset-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .user-select-none {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  .touch-pan-x {
+    touch-action: pan-x;
+  }
+  
+  .touch-none {
+    touch-action: none;
+  }
+}
+
+/* Custom scrollbars for better mobile experience */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.5);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.8);
+}
+
+/* Mobile viewport adjustments */
+@supports (height: 100dvh) {
+  .min-h-screen {
+    min-height: 100dvh;
+  }
+}
+
+/* Prevent zoom on mobile inputs */
+@media screen and (max-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}
+
+/* Animation for match celebrations */
+.match-celebration {
+  animation: bounceGentle 0.6s ease-out;
+}
+
+/* Hide scrollbars on mobile for cleaner swipe experience */
+@media (max-width: 768px) {
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
