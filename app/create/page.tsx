@@ -389,7 +389,9 @@ export default function CreatePage() {
                         </label>
                         <div className="flex items-center gap-3">
                           <input
-                            ref={el => fileInputRefs.current[index] = el}
+                            ref={(el) => {
+                              fileInputRefs.current[index] = el;
+                            }}
                             type="file"
                             accept="image/*"
                             onChange={(e) => {
